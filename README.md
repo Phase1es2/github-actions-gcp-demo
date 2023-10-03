@@ -13,3 +13,8 @@ Go to the Github Repository ----> Setting ----> Secrets and variables ----> Acti
 add two new Repository secret
 1: $GOOGLE_PROJECT which is similar as the project name that you created
 2: $GOOGLE_APPLICATION_CREDENTIALS the jason file that you downlaod fomr iam & admin
+
+
+To allow github action to do deployment
+you have to go to IAM
+and add grant access to the service accounts that you created and assign rols as K8s engine developer
