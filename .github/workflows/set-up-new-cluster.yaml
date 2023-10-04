@@ -18,13 +18,17 @@ jobs:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
           export_default_credentials: true
 
+      - name: update gcloud
+        run: |
+          gcloud components update
+
+
       - name: Create Autopilot GKE Cluster
         run: |
           # Your command to create the Autopilot GKE cluster goes here
           gcloud container clusters create-auto my-autopilot-cluster \
             --region=us-central1 \
-            --release-channel=stable \
-            --cluster-version=VERSION
+            --project=my-autopilot01
 
       # Additional steps to configure and use the Autopilot GKE cluster
 
