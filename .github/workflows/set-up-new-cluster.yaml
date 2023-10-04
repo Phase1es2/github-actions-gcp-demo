@@ -1,0 +1,27 @@
+name: Create Autopilot GKE Cluster
+
+on:
+  workflow_dispatch: # Manually trigger the workflow
+
+jobs:
+  create-autopilot-cluster:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: install the gcloud cli
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          project_id: ${{ secrets.GOOGLE_PROJECT }}
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          export_default_credentials: true
+
+      - name: Create Autopilot GKE Cluster
+        run: |
+          # Your command to create the Autopilot GKE cluster goes here
+          gcloud container clusters create-autopilot my-autopilot-cluster --region=us-central1
+
+      # Additional steps to configure and use the Autopilot GKE cluster
+
