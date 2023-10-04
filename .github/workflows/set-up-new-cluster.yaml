@@ -23,7 +23,7 @@ jobs:
           # Your command to create the Autopilot GKE cluster goes here
           gcloud container clusters create-auto my-autopilot-cluster \
             --region=us-central1 \
-            --release-channel=RELEASE_CHANNEL \
+            --release-channel=stable \
             --cluster-version=VERSION
 
       # Additional steps to configure and use the Autopilot GKE cluster
