@@ -1,4 +1,4 @@
-name: Create Autopilot GKE Cluster
+name: Create GKE Cluster
 
 on:
   workflow_dispatch: # Manually trigger the workflow
@@ -23,12 +23,12 @@ jobs:
           gcloud components update
 
 
-      - name: Create Autopilot GKE Cluster
+      - name: Create GKE Cluster
         run: |
-          # Your command to create the Autopilot GKE cluster goes here
-          gcloud container clusters create-auto my-autopilot-cluster \
-            --region=us-central1 \
-            --project=my-autopilot01
+          # Your command to create the GKE cluster goes here
+          gcloud container clusters create example-cluster \
+          --zone us-central1-a \
+          --node-locations us-central1-a,us-central1-b,us-central1-c
 
       # Additional steps to configure and use the Autopilot GKE cluster
 
