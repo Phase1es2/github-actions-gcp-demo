@@ -1,4 +1,4 @@
-name: Create GKE Cluster
+name: Create new GKE Cluster
 
 on:
   workflow_dispatch:
@@ -29,4 +29,6 @@ jobs:
       run: |
         gcloud container clusters create my-gke-cluster \
           --num-nodes $APP_NODES \
-          --region us-central1
+          --region us-central1 \
+          --no-enable-ip-alias \ # Disable IP aliasing
+          --location-policy ANY # Set location policy to ANY
