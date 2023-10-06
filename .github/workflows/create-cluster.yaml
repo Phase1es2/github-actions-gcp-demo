@@ -22,11 +22,18 @@ jobs:
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
 
+    - name: Authenticate with Google Cloud
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      run: |
+        gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+      
+
     - name: Create Regional Autopilot Cluster
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         APP_NODES: ${{ github.event.inputs.app_nodes }}
       run: |
         gcloud container clusters create-auto back_up_cluster \
-        --region us-central1\
+        --region=us-central1\
         --project=$GOOGLE_PROJECT
