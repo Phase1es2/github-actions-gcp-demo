@@ -23,7 +23,7 @@ jobs:
         install_components: 'gke-gcloud-auth-plugin'
         export_default_credentials: true
 
-        
+
     - name: Create Regional Autopilot Cluster
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
@@ -31,4 +31,4 @@ jobs:
       run: |
         gcloud container clusters create-auto back_up_cluster \
         --region=us-central1-a\
-        --project=$GOOGLE_PROJECT
+        --project=nginx2-400821
