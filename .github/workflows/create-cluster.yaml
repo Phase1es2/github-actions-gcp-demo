@@ -1,4 +1,4 @@
-name: Create Regional Autopilot Cluster
+name: Create Autopilot Cluster
 
 on:
   workflow_dispatch:
@@ -27,7 +27,6 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         APP_NODES: ${{ github.event.inputs.app_nodes }}
       run: |
-        gcloud container clusters create-auto my-regional-autopilot-cluster \
-          --region us-central1 \
-          --num-nodes $APP_NODES
-
+        gcloud container clusters create-auto back_up_cluster \
+        --region us-central1\
+        --project=$GOOGLE_PROJECT
