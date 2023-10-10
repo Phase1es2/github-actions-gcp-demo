@@ -40,18 +40,18 @@ spec:
   rules:
     - http:
         paths:
+          - path: /pod
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 8080
           - path: /pod1
             pathType: Prefix
             backend:
               service:
                 name: nginx
                 port:
-                  number: 80
-          - path: /pod2
-            pathType: Prefix
-            backend:
-              service:
-                name: nginx
-                port:
-                  number: 80
+                  number: 8080
 
