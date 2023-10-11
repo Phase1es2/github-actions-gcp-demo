@@ -11,10 +11,10 @@ on:
         description: 'Name of the Autopilot cluster'
         required: true
         default: 'backup' # Default cluster name, change it when needed
-      zone_name:
-        description: "Zone"
+      region_name:
+        description: "Compute region (e.g. us-central1) for the cluster"
         required: true
-        default: us-central1-a
+        default: 'us-central1'
 
 jobs:
   create-cluster:
@@ -38,6 +38,5 @@ jobs:
         APP_NODES: ${{ github.event.inputs.app_nodes }}
       run: |
         gcloud container clusters create-auto $CLUSTER_NAME \
-            --region=us-central1\
-            --zone=$ZONE_NAME\
+            --region=$REGION_NAME\
             --project=$GOOGLE_PROJECT\
