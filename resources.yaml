@@ -37,6 +37,11 @@ kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
+  defaultBackend:
+    service:
+      name: default-backend
+      port:
+        number: 80
   rules:
     - http:
         paths:
@@ -54,4 +59,3 @@ spec:
                 name: nginx
                 port:
                   number: 80
-
