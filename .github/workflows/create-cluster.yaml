@@ -39,4 +39,4 @@ jobs:
       run: |
         gcloud container clusters create-auto $CLUSTER_NAME \
             --region=$REGION_NAME\
-            --project=$GOOGLE_PROJECT\
+            --project=$GOOGLE_PROJECT
