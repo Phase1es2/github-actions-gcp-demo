@@ -39,7 +39,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: default-backend
+      name: nginx
       port:
         number: 80
   rules:
