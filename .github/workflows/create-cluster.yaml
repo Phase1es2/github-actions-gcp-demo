@@ -39,6 +39,6 @@ jobs:
         APP_NODES: ${{ github.event.inputs.app_nodes }}
         REGION_AREA: ${{ github.event.inputs.region_area }}
       run: |
-        gcloud container clusters create-auto backup \
+        gcloud container clusters create-auto $CLUSTER_NAME \
             --region=$REGION_AREA \
             --project=$GOOGLE_PROJECT
