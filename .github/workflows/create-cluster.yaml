@@ -11,10 +11,10 @@ on:
         description: 'Region'
         required: true
         default: 'us-central1'
-      #cluster_name:
-       # description: 'Name of the Autopilot cluster'
-        #required: true
-        #default: 'backup' # Default cluster name, change it when needed
+      cluster_name:
+        description: 'Name of the Autopilot cluster'
+        required: true
+        default: 'backup' # Default cluster name, change it when needed
 
 jobs:
   create-cluster:
@@ -35,7 +35,9 @@ jobs:
     - name: Create Regional Autopilot Cluster
       env:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+        CLUSTER_NAME: ${{ github.event.inputs.cluster_name }}
         APP_NODES: ${{ github.event.inputs.app_nodes }}
+        REGION_AREA: ${{ github.event.inputs.region_area }}
       run: |
         gcloud container clusters create-auto backup \
             --region=$REGION_AREA \
