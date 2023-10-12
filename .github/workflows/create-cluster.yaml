@@ -7,10 +7,14 @@ on:
         description: 'Number of app nodes'
         required: true
         default: '3' # change the default value as needed
-      cluster_name:
-        description: 'Name of the Autopilot cluster'
+      region_area:
+        description: 'Region'
         required: true
-        default: 'backup' # Default cluster name, change it when needed
+        default: 'us-central1'
+      #cluster_name:
+       # description: 'Name of the Autopilot cluster'
+        #required: true
+        #default: 'backup' # Default cluster name, change it when needed
 
 jobs:
   create-cluster:
@@ -33,6 +37,6 @@ jobs:
         GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
         APP_NODES: ${{ github.event.inputs.app_nodes }}
       run: |
-        gcloud container clusters create-auto $CLUSTER_NAME \
-            --region=us-central1\
+        gcloud container clusters create-auto backup \
+            --region=$REGION_AREA\
             --project=$GOOGLE_PROJECT
